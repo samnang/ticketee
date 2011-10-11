@@ -17,6 +17,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'dynamic_form'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
