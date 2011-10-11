@@ -11,6 +11,10 @@ class ProjectsController < ApplicationController
     @project = Project.new
   end
 
+  def edit
+    @project = Project.find(params[:id])
+  end
+
   def create
     @project = Project.new(params[:project])
     if @project.save
@@ -19,6 +23,16 @@ class ProjectsController < ApplicationController
       flash[:alert] = "Project has not been created."
       render :new
     end
+  end
 
+  def update
+    @project = Project.find(params[:id])
+
+    if @project.update_attributes(params[:project])
+      redirect_to @project, :notice => "Project has been updated."
+    else
+      flash[:alert] = "Project has not been updated."
+      render :edit
+    end
   end
 end
