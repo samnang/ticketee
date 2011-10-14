@@ -29,6 +29,10 @@
       <%= link_to "Sign up", new_user_registration_path %>
       <%= link_to "Sign in", new_user_session_path %>
     <% end %>
+
+    <%- admin_only do %>
+      <%= link_to "Admin", admin_root_path  %>
+    <% end %>
   </nav>
 
   <%= yield %>
