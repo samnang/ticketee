@@ -11,6 +11,9 @@ class ProjectsController < ApplicationController
     @project = Project.new
   end
 
+  def show
+  end
+
   def create
     @project = Project.new(params[:project])
     if @project.save

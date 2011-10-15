@@ -31,7 +31,7 @@
       <%= link_to "Sign in", new_user_session_path %>
     <% end %>
 
-    <%- admin_only do %>
+    <% admin_only do %>
       <%= link_to "Admin", admin_root_path  %>
     <% end %>
   </nav>

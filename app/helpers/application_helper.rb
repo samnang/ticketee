@@ -12,6 +12,6 @@ module ApplicationHelper
   end
 
   def authorized?(permission, thing, &block)
-    yield if can?(permission, thing) || current_user.admin?
+    block.call if can?(permission, thing) || current_user.admin?
   end
 end
