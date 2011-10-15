@@ -14,7 +14,7 @@
           <% permissions.each do |name, text| %>
 ￼￼￼￼        <td>
               <%= check_box_tag "permissions[#{project.id}][#{name}]",
-                @ability.can?(name.to_sym, project) %>
+                @ability.can?(name, project) %>
             </td>
           <% end %>
         </tr>
