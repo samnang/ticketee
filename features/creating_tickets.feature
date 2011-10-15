@@ -10,6 +10,7 @@ Feature: Creating Tickets
       | user@ticketee.com | password |
     And I am signed in as them
     And "user@ticketee.com" can view the "Internet Explorer" project
+    And "user@ticketee.com" can create tickets in the "Internet Explorer" project
     And I am on the homepage
     When I follow "Internet Explorer"
     And I follow "New Ticket"
