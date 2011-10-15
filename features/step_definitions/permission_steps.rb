@@ -6,6 +6,13 @@ Given permission_step do |user, permission, on, project|
                     permission)
 end
 
+When /^I check "([^"]*)" for "([^"]*)"$/ do |permission, name|
+  project = Project.find_by_name!(name)
+  permission = permission.downcase.gsub(" ", "_")
+  field_id = "permissions_#{project.id}_#{permission}"
+  steps(%Q{When I check "#{field_id}"})
+end
+
 def create_permission(user, object, action)
   Permission.create!(:user => user,
                      :thing => object,
