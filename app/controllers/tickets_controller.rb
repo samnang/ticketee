@@ -11,6 +11,10 @@ class TicketsController < ApplicationController
     @ticket.assets.build
   end
 
+  def show
+    @comment = @ticket.comments.build
+  end
+
   def create
     @ticket = @project.tickets.build(params[:ticket].merge(:user => current_user))
     if @ticket.save
