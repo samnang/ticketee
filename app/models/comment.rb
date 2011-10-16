@@ -9,7 +9,7 @@ class Comment < ActiveRecord::Base
   delegate :project, :to => :ticket
 
   before_create :set_previous_state
-  after_create :set_ticket_state
+  after_create :set_ticket_state, :creator_watches_ticket
 
   def set_previous_state
     self.previous_state = ticket.state
@@ -18,5 +18,9 @@ class Comment < ActiveRecord::Base
   def set_ticket_state
     self.ticket.state = self.state
     self.ticket.save
+  end
+
+  def creator_watches_ticket
+    ticket.watchers << user
   end
 end
