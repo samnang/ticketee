@@ -17,6 +17,6 @@ class Ticket < ActiveRecord::Base
       Tag.find_or_create_by_name(tag)
     end
 
-    self.tags << tags
+    self.tags = tags
   end
 end
