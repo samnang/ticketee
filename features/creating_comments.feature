@@ -42,3 +42,13 @@ Feature: Creating Comments
   Scenario: A user without permission cannot change the state
     When I follow "Change a ticket's state"
     Then I should not see the "#comment_state_id" element
+
+  @wip
+  Scenario: Adding a tag to a ticket
+    When I follow "Change a ticket's state"
+    Then I should not see "bug" within "#ticket #tags"
+    When I fill in "Text" with "Adding the bug tag"
+    And I fill in "Tags" with "bug"
+    And I press "Create Comment"
+    Then I should see "Comment has been created"
+    And I should see "bug" within "#ticket #tags"
