@@ -1,10 +1,15 @@
 class TicketsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :find_project
-  before_filter :find_ticket, :except => [:index, :new, :create]
+  before_filter :find_ticket, :except => [:index, :new, :create, :search]
   before_filter :authorize_create!, :only => [:new, :create]
   before_filter :authorize_update!, :only => [:edit, :update]
   before_filter :authorize_delete!, :only => :destroy
+
+  def search
+    @tickets = @project.tickets.search(params[:search]) 
+    render "projects/show"
+  end
 
   def new
     @ticket = @project.tickets.build
