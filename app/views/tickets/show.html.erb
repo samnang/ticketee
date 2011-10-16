@@ -8,6 +8,7 @@
       :confirm => "Are you sure you want to delete this ticket?" %>
   <% end %>
   <br /><small>Created by <%= @ticket.user.email %></small>
+  <%= render @ticket.state if @ticket.state %>
   <%= simple_format(@ticket.description) %>
 
   <% if @ticket.assets.exists? %>
