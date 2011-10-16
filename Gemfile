@@ -28,6 +28,7 @@ gem 'devise'
 
 group :test, :development do
   gem 'rspec-rails'
+  gem 'gmail'
 end
 
 group :test do

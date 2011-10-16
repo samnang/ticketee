@@ -79,6 +79,12 @@ GEM
     ffi (1.0.9)
     gherkin (2.4.16)
       json (>= 1.4.6)
+    gmail (0.4.0)
+      gmail_xoauth (>= 0.3.0)
+      mail (>= 2.2.1)
+      mime (>= 0.1)
+    gmail_xoauth (0.3.0)
+      oauth (>= 0.3.6)
     hike (1.2.1)
     i18n (0.6.0)
     jquery-rails (1.0.14)
@@ -93,9 +99,11 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mime (0.1)
     mime-types (1.16)
     multi_json (1.0.3)
     nokogiri (1.5.0)
+    oauth (0.4.5)
     orm_adapter (0.0.5)
     paperclip (2.4.4)
       activerecord (>= 2.3.0)
@@ -192,6 +200,7 @@ DEPENDENCIES
   dynamic_form
   email_spec
   factory_girl
+  gmail
   jquery-rails
   launchy
   paperclip
