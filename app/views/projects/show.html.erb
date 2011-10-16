@@ -12,9 +12,10 @@
 <% end %>
 
 <ul id='tickets'>
-  <% @project.tickets.each do |t| %>
+  <% @project.tickets.each do |ticket| %>
     <li>
-      #<%= t.id %> - <%= link_to t.title, [@project, t] %>
+      <%= render ticket.state if ticket.state %>
+      #<%= ticket.id %> - <%= link_to ticket.title, [@project, ticket] %>
     </li>
   <% end %>
 </ul>
