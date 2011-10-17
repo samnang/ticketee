@@ -3,8 +3,6 @@ require 'spec_helper'
 describe Receiver do
 
   it "parses a reply from a comment update into a comment" do
-    pending
-
     comment = Factory(:comment)
     ticket = comment.ticket
 
@@ -15,8 +13,7 @@ describe Receiver do
     mail = Mail.new(:from => user.email,
                     :subject => "Re: #{comment_email.subject}",
                     :body => %Q{This is a brand new comment
-                        #{comment_email.default_part_body} <co id="ch11_923_3"/>
-                   },
+                        #{comment_email.default_part_body}},
                     :to => comment_email.from) 
 
 

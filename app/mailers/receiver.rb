@@ -1,5 +1,4 @@
 class Receiver < ActionMailer::Base
-  default from: "from@example.com"
   
   def self.parse(email)
     reply_separator = /(.*?)\s?== ADD YOUR REPLY ABOVE THIS LINE ==/m
