@@ -6,7 +6,6 @@ class Api::V1::ProjectsController < Api::V1::BaseController
   end
 
   def show
-    @project = Project.find(params[:id])
     respond_with(@project, :methods => "last_ticket")
   end
 
