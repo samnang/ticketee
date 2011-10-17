@@ -2,6 +2,7 @@ class Api::V1::BaseController < ApplicationController
   respond_to :json, :xml
 
   before_filter :authenticate_user
+  before_filter :authorize_admin!, :except => [:index, :show]
 
   private
 
@@ -9,6 +10,14 @@ class Api::V1::BaseController < ApplicationController
     @current_user = User.find_by_authentication_token(params[:token])
     unless @current_user
       respond_with({:error => "Token is invalid."})
+    end
+  end
+
+  def authorize_admin!
+    unless @current_user.admin?
+      error = { :error => "You must be an admin to do that." }
+      warden.custom_failure!
+      render params[:format].to_sym => error, :status => 401
     end
   end
 
