@@ -23,7 +23,12 @@ class Api::V1::BaseController < ApplicationController
   end
 
   def check_rate_limit
-    @current_user.increment!(:request_count)
+    if @current_user.request_count > 100
+      error = { :error => "Rate limit exceeded." }
+      respond_with(error, :status => 403)
+    else
+      @current_user.increment!(:request_count)
+    end
   end
 
   def current_user
