@@ -33,5 +33,13 @@ describe '/api/v1/projects', :type => :api do
         p["project"]["name"] == "Access Denied"
       end.should be_false
     end
+
+    it "xml" do
+      get "#{url}.xml", :token => token
+
+      last_response.body.should eql(Project.readable_by(user).to_xml)
+      projects = Nokogiri::XML(last_response.body)
+      projects.css("project name").text.should eql("Ticketee")
+    end
   end
 end

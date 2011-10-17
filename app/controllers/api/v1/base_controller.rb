@@ -1,5 +1,5 @@
 class Api::V1::BaseController < ApplicationController
-  respond_to :json
+  respond_to :json, :xml
 
   before_filter :authenticate_user
 
