@@ -2,6 +2,7 @@ class Api::V1::BaseController < ApplicationController
   respond_to :json, :xml
 
   before_filter :authenticate_user
+  before_filter :check_rate_limit
   before_filter :authorize_admin!, :except => [:index, :show]
 
   private
@@ -19,6 +20,10 @@ class Api::V1::BaseController < ApplicationController
       warden.custom_failure!
       render params[:format].to_sym => error, :status => 401
     end
+  end
+
+  def check_rate_limit
+    @current_user.increment!(:request_count)
   end
 
   def current_user
