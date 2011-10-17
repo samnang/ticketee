@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'cancan'
 gem 'paperclip'
 gem 'searcher'
+gem "oa-oauth", :require => "omniauth/oauth"
 
 
 # Gems used only for assets and not required
