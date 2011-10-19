@@ -7,7 +7,7 @@ class TicketsController < ApplicationController
   before_filter :authorize_delete!, :only => :destroy
 
   def search
-    @tickets = @project.tickets.search(params[:search]) 
+    @tickets = @project.tickets.search(params[:search]).page(params[:page])
     render "projects/show"
   end
 

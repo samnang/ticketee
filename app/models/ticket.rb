@@ -1,4 +1,6 @@
 class Ticket < ActiveRecord::Base
+  paginates_per 50
+
   belongs_to :project
   belongs_to :user
   belongs_to :state

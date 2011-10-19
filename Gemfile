@@ -10,6 +10,7 @@ gem 'cancan'
 gem 'paperclip'
 gem 'searcher'
 gem "oa-oauth", :require => "omniauth/oauth"
+gem "kaminari"
 
 
 # Gems used only for assets and not required
