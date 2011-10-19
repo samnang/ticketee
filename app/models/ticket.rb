@@ -1,5 +1,5 @@
 class Ticket < ActiveRecord::Base
-  paginates_per 50
+  paginates_per 50 # 200 seems to be a common number to use for API return objects per request.
 
   belongs_to :project
   belongs_to :user
