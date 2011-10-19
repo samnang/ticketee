@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
-  caches_page :show
+  caches_action :show, :cache_path => proc { project_path(params[:id]) + "/#{current_user.id}/#{params[:page] || 1}" }
+  cache_sweeper :tickets_sweeper, :only => [:create, :update, :destroy]
 
   before_filter :authorize_admin!, :except => [:index, :show]
   before_filter :authenticate_user!, :only => [:index, :show]
