@@ -7,6 +7,5 @@ class CreateTickets < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :tickets, :project_id
   end
 end
