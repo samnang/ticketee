@@ -1,7 +1,5 @@
 class CommentObserver < ActiveRecord::Observer
   def after_create(comment)
-    (comment.ticket.watchers - [comment.user]).each do |user|
-      Notifier.comment_updated(comment, user).deliver
-    end
+    Delayed::Job.enqueue CommentNotifierJob.new(comment.id)
   end
 end

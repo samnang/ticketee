@@ -11,6 +11,7 @@ gem 'paperclip'
 gem 'searcher'
 gem "oa-oauth", :require => "omniauth/oauth"
 gem "kaminari"
+gem "delayed_job"
 
 
 # Gems used only for assets and not required

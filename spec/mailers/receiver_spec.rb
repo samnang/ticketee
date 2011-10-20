@@ -6,6 +6,8 @@ describe Receiver do
     comment = Factory(:comment)
     ticket = comment.ticket
 
+    Delayed::Worker.new.work_off
+
     comment_email = ActionMailer::Base.deliveries.last
 
     user = Factory(:user)
